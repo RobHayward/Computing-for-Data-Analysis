@@ -1,0 +1,86 @@
+\documentclass{article}
+\usepackage{hyperref}
+\title{Notes for Week 1}
+\author{Rob Hayward}
+\begin{document}
+\maketitle
+There are five main objects in R
+\begin{itemize}
+\item character
+\item numeric (real numbers)
+\item integer
+\item complex
+\item logical
+\end{itemize}
+
+The most basic object is a \emph{vector}.  A vector can only contain objects of the same class.  However, there is one exception. The exception is a \emph{list}.  A list is a sort of vector that can contain different class elements. There are to elements to a vector:  the class of object and the length. 
+
+A number is a numeric (a double precision real number).  If you want an integer, you have to speficy an L suffix.  In is infinity.  NaN is an undefined number (not a number). 
+
+Attributes of an object tell us something about it. Attributes() let you set or modify the attibutes of an object. 
+
+Expressions are typed at the prompt. Useful ways of creating matrices is to rbind or cbind vectors together. 
+
+Lists can be created with different class of object. The elements of a list will have [[1]], while the elements of the part of the list are []. Factors are be ordered or unordered. Factors are treated in a special way by modelling functions like lm and glm. Levels of a factor can be set an an argument of the factor function.  The baseline level is the first factor. This is done by alphabetical order unless set. 
+
+NA can have a class (ie numeric NA or character NA).  NaN value is NA but NA is not NaN. For example, NA is not a missing value (it has been ascribed NA). 
+
+A datafrmae is a special type of list.  Each element of the list must have the same length. They do not have to be the same type. 
+
+Elements  of any object can be named.  For example. 
+
+<<name, echo=TRUE>>=
+x <- 1:3
+names(x)
+names(x) <- c("foo", "bar", "norf")
+x
+names(x)
+@
+Lists and matrices can also have names in this way. 
+
+[] can be used to extract or subset information from a vector. You will get back something of the same class. [[]] can only be used to extract ONE element and you can change the class from that of the vector. Often used on a list or a data frame. \$ can used a name but its semantics are similar to [[]]. When subsetting a matrix you will get back a vector.  If you take the first column of a 3*3 matrix and you want a matrix you have to 
+<<matrix>>=
+x <- matrix(1:6, nrow = 2, ncol = 3)
+x[1,]
+x[1, ,drop = FALSE]
+@
+Subsetting lists
+<<list>>=
+x <- list(foo = 1:4, bar = 0.6)
+x[1]
+x[[1]]
+x$bar
+x[["bar"]]
+x["bar"]
+@
+The last of these will return a list.
+
+Using the [[]] is particularly useful if you are using a computed name. 
+<<Important>>=
+x <- list(foo = 1:4, bar = 0.6, baz = "hello")
+name <- "foo"
+x[[name]]
+x$name
+x$foo
+@
+
+The second of these will not work because it is looking for the object "name". 
+
+The [[]] can also be used to extract an element from a list element.  So [[2,3]] will extract the third element from the second item in a list. 
+
+Complete cases will identify those rows or or elements of more than one vector that are complete. 
+
+\href{https://class.coursera.org/compdata-003/lecture/11}{Peng Video}
+
+\section{Vectorisation}
+<<vector>>=
+x <- 1:4; y <- 6:9
+x + y
+x > 2
+x <= 2
+y == 8 
+x * y 
+@
+This is element-wise.  If you have two matrices and want to multiply, you must us $%*%$
+
+\end{document}
