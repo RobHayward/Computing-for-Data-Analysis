@@ -83,4 +83,27 @@ x * y
 @
 This is element-wise.  If you have two matrices and want to multiply, you must us $%*%$
 
+\section{Reading and Writing Files}
+read and write data into or out of R with these commands.  It is important to read the help files for read.table. Using the options will speed the process.  Can input a few lines and then set the class of variables. 
+
+Dumping and duputing can be used to input data that is in other formats. These will maintain more of the information. These are particularly useful for textual formats. Using dput you can export the R object to a file.  It contains informtaioin that will allow the R object to be reconstrcuted. Dump can be used for multiple objects.  Dput can only deal with one object.
+
+Others
+\begin{itemize}
+\item file - opens connection to a file (including web page)
+\item gzfile - gzip
+\item bzfile - bzip2 files
+\end{itemize}
+
+It is possible to use 'connection' to read files. Need to open a connection and the close it. url function can open a connection to a web page. 
+
+If you have a function, you can load it into the session using "source".  
+
+'split' function will split a dataframe into components that are specified. 
+
+\section{Assignment One}
+<<read>>=
+da <- read.csv(hw1.data.csv)
+@
+
 \end{document}
